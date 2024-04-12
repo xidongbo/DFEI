@@ -6,6 +6,7 @@ Large-Scale Multi-Domain Recommendation: an Automatic Domain Feature Extraction 
 
 # Requirement
 python==3.6
+
 tensorflow-gpu==1.15.0
 
 # Example to run the codes
