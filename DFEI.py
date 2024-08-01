@@ -1,6 +1,6 @@
 """
 2024-04-01
-Tensorflow implementation of Automatic Domain Feature Extraction and Integration (ADFEI) framework.
+Tensorflow implementation of Automatic Domain Feature Extraction and Integration (DFEI) framework.
 The source code for the paper: Large-Scale Multi-Domain Recommendation: an Automatic Domain Feature Extraction and Integration Framework
 @author: Anonymous
 python = 3.6
@@ -120,7 +120,7 @@ class GeneratorEnqueuer(object):
         self.queue = None
 
 
-class ADFEI:
+class DFEI:
     def __init__(
         self,
         domains,
@@ -230,14 +230,14 @@ class ADFEI:
 
         self._init_graph()
         print("this model version is %d" % self.version)
-        if not os.path.exists(os.path.join(self.file_folder, f"ADFEI_{self.version}")):
-            os.makedirs(os.path.join(self.file_folder, f"ADFEI_{self.version}"))
+        if not os.path.exists(os.path.join(self.file_folder, f"DFEI_{self.version}")):
+            os.makedirs(os.path.join(self.file_folder, f"DFEI_{self.version}"))
 
     def _init_graph(self):
         """
-        Init the tf graph for ADFEI model.
+        Init the tf graph for DFEI model.
         """
-        print("Init raw ADFEI graph")
+        print("Init raw DFEI graph")
         tf.set_random_seed(self.random_seed)
         tf.reset_default_graph()
         self.weights = self._initialize_weights()
@@ -429,7 +429,7 @@ class ADFEI:
             config=tf.ConfigProto(gpu_options=gpu_options)
         )
         self.sess.run(init)
-        print("ADFEI graph initialized...")
+        print("DFEI graph initialized...")
 
         # number of params
         total_parameters = 0
@@ -646,8 +646,8 @@ class ADFEI:
                         self.save_path = self.saver.save(
                             self.sess,
                             save_path=os.path.join(
-                                os.path.join(self.file_folder, f"ADFEI_{self.version}"),
-                                f"ADFEI_{self.version}.ckpt",
+                                os.path.join(self.file_folder, f"DFEI_{self.version}"),
+                                f"DFEI_{self.version}.ckpt",
                             ),
                             global_step=e,
                         )
@@ -664,8 +664,8 @@ class ADFEI:
                     self.save_path = self.saver.save(
                         self.sess,
                         save_path=os.path.join(
-                            os.path.join(self.file_folder, f"ADFEI_{self.version}"),
-                            f"ADFEI_{self.version}.ckpt",
+                            os.path.join(self.file_folder, f"DFEI_{self.version}"),
+                            f"DFEI_{self.version}.ckpt",
                         ),
                         global_step=e,
                     )
@@ -921,7 +921,7 @@ class ADFEI:
 
         # save as tf serving for online predict.
         self.serving_save_path = os.path.join(
-            self.file_folder, f"ADFEI_{self.version}", "serving"
+            self.file_folder, f"DFEI_{self.version}", "serving"
         )
         if os.path.exists(self.serving_save_path):
             shutil.rmtree(self.serving_save_path)
@@ -1138,7 +1138,7 @@ class ADFEI:
 if __name__ == "__main__":
 
     def parse_args():
-        parser = argparse.ArgumentParser(description="Run ADFEI.")
+        parser = argparse.ArgumentParser(description="Run DFEI.")
         parser.add_argument(
             "--domains", nargs="?", required=True, help="The domains to use."
         )
@@ -1241,7 +1241,7 @@ if __name__ == "__main__":
     args = parse_args()
     os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu
 
-    model = ADFEI(
+    model = DFEI(
         domains=eval(args.domains),
         use_domainid=args.use_domainid,
         file_folder=args.file_folder,
