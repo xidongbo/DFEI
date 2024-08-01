@@ -2,7 +2,7 @@
 2024-04-01
 Tensorflow implementation of Automatic Domain Feature Extraction and Integration (DFEI) framework.
 The source code for the paper: Large-Scale Multi-Domain Recommendation: an Automatic Domain Feature Extraction and Integration Framework
-@author: Anonymous
+@author: Dongbo Xi
 python = 3.6
 tensorflow = 1.15.0
 """
