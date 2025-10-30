@@ -1,5 +1,5 @@
 """
-2024-04-01
+2025-09-01
 Tensorflow implementation of Automatic Domain Feature Extraction and Integration (DFEI) framework.
 The source code for the paper: Large-Scale Multi-Domain Recommendation: an Automatic Domain Feature Extraction and Integration Framework
 @author: Dongbo Xi
