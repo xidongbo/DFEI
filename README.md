@@ -19,4 +19,4 @@ The instruction of commands has been clearly stated in the codes (see the parse_
 # Dataset
 We use the public KuaiRand-1K dataset [https://github.com/chongminggao/KuaiRand].
 
-Last Update Date: Oct. 30, 2025 (UTC+8)
+Last Update Date: Jan. 21, 2026 (UTC+8)
